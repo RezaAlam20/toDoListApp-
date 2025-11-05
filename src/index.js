@@ -1,13 +1,23 @@
 import styleSheet from "./style.css"
-import { projectHandler } from "./projectHandler"
-import { projects } from "./projectHandler"
+import { makeProjectsDivs } from "./render"
+import { projects } from "./store"
+import { projectAdder } from "./store"
+
+
+
+projectAdder()
 
 
 
 
-projectHandler()
+const form = document.querySelector("form")
+form.addEventListener("submit" , ()=>  { 
+    makeProjectsDivs(projects)
+})
 
 
-document.addEventListener("click" , ()=> console.log(projects))
+
+
+
 
 
