@@ -1,16 +1,28 @@
 
+import { project } from "./project"
+
+
+
 const nav = document.querySelector("#nav")
 
 
-
 let projects = []
-export function projectHandler(){ 
+let activeProject = projects[-1]
+
+
+
+
+
+
+
+export function projectAdder(){ 
     const form = document.createElement("form")
     form.addEventListener("submit" , (e)=>{  
         e.preventDefault()
         let value = form.querySelector("#name").value
         let newProject = new project(value)
         projects.push(newProject)
+        console.log(projects)
         
     })
     form.innerHTML = `<label for="name">project name:</label>
@@ -18,27 +30,14 @@ export function projectHandler(){
                     <button type="submit">create</button>`
     nav.appendChild(form)
 
-}
-
-
-class project{ 
-    constructor(name){
-        this.name = name
-    }
-
-    createTask(){ 
-        
-    }
-
-    deleteTask(){  
-        
-    }
-
 
 
 }
+
+
 
 export {projects}
+export {activeProject}
 
 
 
