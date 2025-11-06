@@ -14,6 +14,11 @@ projectAdder()
 const form = document.querySelector("form")
 form.addEventListener("submit" , ()=>  { 
     renderProjects(projects)
+    const lastIndex = projects.length - 1
+    activeProject = projects[lastIndex]
+    renderTasks(activeProject)
+
+
 })
 
 
@@ -32,6 +37,7 @@ container.addEventListener("click" , (e)=> {
             if (projects[i].id == activeId){  
                 activeProject = projects[i]
                 console.log(activeProject)
+                renderTasks(activeProject)
             }
         }
     }
