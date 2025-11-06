@@ -3,12 +3,11 @@ import { renderProjects } from "./render"
 import { projects } from "./store"
 import { projectAdder } from "./store"
 import { projectRemover } from "./store"
+import { renderTasks } from "./render"
+import { project } from "./project"
 
-
-
-
+let activeProject ;
 projectAdder()
-
 
 
 
@@ -27,7 +26,33 @@ container.addEventListener("click" , (e)=> {
 
 
     }
+    else if (e.target.className =="project"){ 
+        const activeId = e.target.id 
+        for(let i = 0 ; i<projects.length ; i++) { 
+            if (projects[i].id == activeId){  
+                activeProject = projects[i]
+                console.log(activeProject)
+            }
+        }
+    }
 })
+
+
+
+
+export {activeProject}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
