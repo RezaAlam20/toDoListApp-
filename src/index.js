@@ -1,11 +1,12 @@
 import styleSheet from "./style.css"
 import { renderProjects } from "./render"
-import { projects } from "./store"
 import { projectRemover } from "./store"
 import { renderTasks } from "./render"
 import { project } from "./project"
 import { setActiveProject } from "./store"
 import { getActiveProject } from "./store"
+import { getProjectsArr } from "./store"
+import { addToProjectsArr } from "./store"
 
 
 
@@ -30,10 +31,10 @@ function projectAdder(){
         e.preventDefault()
         let value = form.querySelector("#name").value
         let newProject = new project(value)
-        projects.push(newProject)
-        renderProjects(projects)
-        const lastIndex = projects.length - 1
-        setActiveProject(projects[lastIndex])
+        addToProjectsArr(newProject)
+        renderProjects(getProjectsArr())
+        const lastIndex = getProjectsArr().length - 1
+        setActiveProject(getProjectsArr()[lastIndex])
         renderTasks(getActiveProject())
 
         
@@ -50,15 +51,15 @@ const container = document.querySelector("#container")
 container.addEventListener("click" , (e)=> { 
     if (e.target.className == "removeBtn"){ 
         projectRemover(e.target.parentElement)
-        renderProjects(projects)
+        renderProjects(getProjectsArr())
 
 
     }
     else if (e.target.className =="project"){ 
         const activeId = e.target.id 
-        for(let i = 0 ; i<projects.length ; i++) { 
-            if (projects[i].id == activeId){  
-                const curproject = projects[i]
+        for(let i = 0 ; i<getProjectsArr().length ; i++) { 
+            if (getProjectsArr()[i].id == activeId){  
+                const curproject = getProjectsArr()[i]
                 setActiveProject(curproject)
                 renderTasks(getActiveProject())
             }
@@ -67,7 +68,11 @@ container.addEventListener("click" , (e)=> {
 })
 
 
-
+container.addEventListener("click" , (e)=>{ 
+     if (e.target.className == "createTask") { 
+        
+     }
+})
 
 
 
