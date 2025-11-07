@@ -30,8 +30,18 @@ function setActiveProject(project){
 
 }
 
+function getProjectsArr(){  
+    return projects
+}
+
+function addToProjectsArr(newProject){ 
+    projects.push(newProject)
+
+}
+
 export {projects}
 export {setActiveProject}
 export {getActiveProject}
-
+export {getProjectsArr}
+export {addToProjectsArr}
 
