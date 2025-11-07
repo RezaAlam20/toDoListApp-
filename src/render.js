@@ -1,7 +1,3 @@
-import { project } from "./project";
-import { projects } from "./store";
-
-
 
 const container = document.querySelector("#container")
 
@@ -27,6 +23,7 @@ export function renderProjects(projects){
         div.appendChild(name)
         removeProjectDiv(div)
         editProject(div)
+        createTaskBtn(div)
 
 
         
@@ -56,6 +53,9 @@ function editProject(div){
 
 function renderTasks(activeProject){ 
     const container = document.querySelector("#content")
+    while(container.firstElementChild){ 
+        container.removeChild(container.firstElementChild)
+    }
     for(let i = 0 ; i < activeProject.tasks.length ; i++){  
         const task = document.createElement("div")
         container.appendChild(task)
@@ -65,6 +65,18 @@ function renderTasks(activeProject){
 
 
 }
+
+
+function createTaskBtn(div){  
+    const createTask = document.createElement("div")
+    createTask.classList.add("createTask")
+    div.appendChild(createTask)
+    
+
+
+}
+
+
 
 export {renderTasks}
 
