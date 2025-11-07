@@ -1,43 +1,15 @@
 
-import { project } from "./project"
-
-
-
 const nav = document.querySelector("#nav")
 
 
 let projects = []
-let activeProject = projects[-1]
+let activeProject ;
 
 
 
-const form = document.createElement("form")
-
-
-function projectForm(){  
-        form.innerHTML = `<label for="name">project name:</label>
-                        <input type="text" id="name" name="name">
-                    <button type="submit">create</button>`
-         nav.appendChild(form)
-
-}
-
-
-export function projectAdder(){ 
-    projectForm()
-
-    form.addEventListener("submit" , (e)=>{  
-        e.preventDefault()
-        let value = form.querySelector("#name").value
-        let newProject = new project(value)
-        projects.push(newProject)
-
-        
-    })
 
 
 
-}
 
 export function projectRemover(element){ 
     for(let i = 0 ; i<projects.length ; i++){ 
@@ -46,17 +18,20 @@ export function projectRemover(element){
         }
 
     }
-    console.log(projects)
     
 }
 
+function getActiveProject(){ 
+    return activeProject
+}
+
+function setActiveProject(project){
+    activeProject = project
+
+}
 
 export {projects}
-export {activeProject}
-
-
-
-
-
+export {setActiveProject}
+export {getActiveProject}
 
 
