@@ -11,7 +11,7 @@ import { addToProjectsArr } from "./store"
 
 
 const form = document.createElement("form")
-
+const nav = document.querySelector("nav")
 function projectForm(){  
 
 
@@ -55,8 +55,9 @@ container.addEventListener("click" , (e)=> {
 
 
     }
-    else if (e.target.className =="project"){ 
-        const activeId = e.target.id 
+    else if (e.target.closest(".project")){
+        const project = e.target.closest(".project") 
+        const activeId = project.id
         for(let i = 0 ; i<getProjectsArr().length ; i++) { 
             if (getProjectsArr()[i].id == activeId){  
                 const curproject = getProjectsArr()[i]
@@ -65,6 +66,7 @@ container.addEventListener("click" , (e)=> {
             }
         }
     }
+
 })
 
 
@@ -76,6 +78,10 @@ container.addEventListener("click" , (e)=>{
 
 
 
+
+const defaultP = new project("default")
+defaultP.createTask("test" , "high")
+addToProjectsArr(defaultP)
 
 
 
