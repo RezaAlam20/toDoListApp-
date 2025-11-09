@@ -7,6 +7,7 @@ import { setActiveProject } from "./store"
 import { getActiveProject } from "./store"
 import { getProjectsArr } from "./store"
 import { addToProjectsArr } from "./store"
+import { taskForm } from "./render"
 
 
 
@@ -55,6 +56,10 @@ container.addEventListener("click" , (e)=> {
 
 
     }
+    else if(e.target.className =="createTask") {
+        taskForm()
+        createTaskEventListener()
+    }
     else if (e.target.closest(".project")){
         const project = e.target.closest(".project") 
         const activeId = project.id
@@ -70,18 +75,38 @@ container.addEventListener("click" , (e)=> {
 })
 
 
-container.addEventListener("click" , (e)=>{ 
-     if (e.target.className == "createTask") { 
-        
-     }
-})
+
+function createTaskEventListener(){
+    const taskForm = document.querySelector(".taskForm")
+    taskForm.addEventListener("submit"  , (e)=> { 
+        e.preventDefault()
+        const curproject = getActiveProject()
+        const name = taskForm.querySelector("#taskname")
+        const priority = taskForm.querySelector("#priority");
+        curproject.createTask(name , priority)
+        renderTasks(curproject)
+
+    })
 
 
+    
+
+
+
+}
 
 
 const defaultP = new project("default")
 defaultP.createTask("test" , "high")
 addToProjectsArr(defaultP)
+
+
+
+
+
+
+
+
 
 
 
