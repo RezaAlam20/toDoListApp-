@@ -60,6 +60,15 @@ function renderTasks(activeProject){
         const task = document.createElement("div")
         container.appendChild(task)
         task.classList.add("task")
+        const title = document.createElement("h1")
+        title.textContent = `${activeProject.tasks[i].name}`
+        const priority = document.createElement("p")
+        priority.textContent = `${activeProject.tasks[i].priority}`
+        task.appendChild(title)
+        task.appendChild(priority)
+
+        
+
     }
 
 
@@ -83,15 +92,15 @@ function taskForm() {
     const form = document.createElement("form")
     form.classList.add("taskForm")
     form.innerHTML = `        <div>
-            <label for="taskname" id="taskname">Task name</label>
+            <label for="taskname">Task name</label>
             <input type="text" id="taskname" name="taskname">
         </div>
         <div>
-            <label for="priority" id="priority">priority</label>
+            <label for="priority">priority</label>
             <select name="priority" id="priority">
-                <option value="1">low</option>
-                <option value="2">medium</option>
-                <option value="3">high</option>
+                <option value="low">low</option>
+                <option value="medium">medium</option>
+                <option value="high">high</option>
             </select>
         </div>
         <button type="submit">create Task</button>`
