@@ -77,7 +77,38 @@ function createTaskBtn(div){
 }
 
 
+function taskForm() { 
+    const content = document.querySelector("#content")
+    
+    const form = document.createElement("form")
+    form.classList.add("taskForm")
+    form.innerHTML = `        <div>
+            <label for="taskname" id="taskname">Task name</label>
+            <input type="text" id="taskname" name="taskname">
+        </div>
+        <div>
+            <label for="priority" id="priority">priority</label>
+            <select name="priority" id="priority">
+                <option value="1">low</option>
+                <option value="2">medium</option>
+                <option value="3">high</option>
+            </select>
+        </div>
+        <button type="submit">create Task</button>`
+    content.appendChild(form)
 
+    
+
+
+
+
+}
+
+
+
+
+
+export {taskForm}
 export {renderTasks}
 
 
