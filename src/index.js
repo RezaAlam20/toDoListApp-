@@ -50,6 +50,15 @@ projectAdder()
 const container = document.querySelector("#container")
 
 container.addEventListener("click" , (e)=> { 
+    const project = e.target.closest(".project") 
+    const activeId = project.id
+    for(let i = 0 ; i<getProjectsArr().length ; i++) { 
+        if (getProjectsArr()[i].id == activeId){  
+            const curproject = getProjectsArr()[i]
+            setActiveProject(curproject)
+            renderTasks(getActiveProject())
+        }
+    }
     if (e.target.className == "removeBtn"){ 
         projectRemover(e.target.parentElement)
         renderProjects(getProjectsArr())
@@ -59,17 +68,6 @@ container.addEventListener("click" , (e)=> {
     else if(e.target.className =="createTask") {
         taskForm()
         createTaskEventListener()
-    }
-    else if (e.target.closest(".project")){
-        const project = e.target.closest(".project") 
-        const activeId = project.id
-        for(let i = 0 ; i<getProjectsArr().length ; i++) { 
-            if (getProjectsArr()[i].id == activeId){  
-                const curproject = getProjectsArr()[i]
-                setActiveProject(curproject)
-                renderTasks(getActiveProject())
-            }
-        }
     }
 
 })
@@ -81,8 +79,8 @@ function createTaskEventListener(){
     taskForm.addEventListener("submit"  , (e)=> { 
         e.preventDefault()
         const curproject = getActiveProject()
-        const name = taskForm.querySelector("#taskname")
-        const priority = taskForm.querySelector("#priority");
+        const name = taskForm.querySelector("#taskname").value
+        const priority = taskForm.querySelector("#priority").value
         curproject.createTask(name , priority)
         renderTasks(curproject)
 
@@ -99,13 +97,6 @@ function createTaskEventListener(){
 const defaultP = new project("default")
 defaultP.createTask("test" , "high")
 addToProjectsArr(defaultP)
-
-
-
-
-
-
-
 
 
 
