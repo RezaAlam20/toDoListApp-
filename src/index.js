@@ -16,9 +16,9 @@ const nav = document.querySelector("nav")
 function projectForm(){  
 
 
-        form.innerHTML = `<label for="name">project name:</label>
-                        <input type="text" id="name" name="name">
-                    <button type="submit">create</button>`
+        form.innerHTML = `<label for="name">project name</label>
+                        <div><input type="text" id="name" name="name">
+                    <button type="submit">create</button></div>`
          nav.appendChild(form)
 
 }
@@ -50,25 +50,36 @@ projectAdder()
 const container = document.querySelector("#container")
 
 container.addEventListener("click" , (e)=> { 
-    const project = e.target.closest(".project") 
-    const activeId = project.id
-    for(let i = 0 ; i<getProjectsArr().length ; i++) { 
-        if (getProjectsArr()[i].id == activeId){  
-            const curproject = getProjectsArr()[i]
-            setActiveProject(curproject)
-            renderTasks(getActiveProject())
+
+
+    if (e.target.closest(".project") ){
+        const project = e.target.closest(".project") 
+        const activeId = project.id
+
+        for(let i = 0 ; i<getProjectsArr().length ; i++) { 
+            if (getProjectsArr()[i].id == activeId){  
+                const curproject = getProjectsArr()[i]
+                setActiveProject(curproject)
+                renderTasks(getActiveProject())
+            }
         }
-    }
-    if (e.target.className == "removeBtn"){ 
-        projectRemover(e.target.parentElement)
-        renderProjects(getProjectsArr())
+        if (e.target.className == "removeBtn"){ 
+            projectRemover(e.target.parentElement)
+            renderProjects(getProjectsArr())
 
 
+        }
+        else if(e.target.className =="createTask") {
+            taskForm()
+            createTaskEventListener()
+        }
+
     }
-    else if(e.target.className =="createTask") {
-        taskForm()
-        createTaskEventListener()
-    }
+
+
+    else {return}
+    
+
 
 })
 
