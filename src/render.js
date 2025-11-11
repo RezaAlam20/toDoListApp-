@@ -66,6 +66,9 @@ function renderTasks(activeProject){
         priority.textContent = `${activeProject.tasks[i].priority}`
         task.appendChild(title)
         task.appendChild(priority)
+        const taskObj = activeProject.tasks[i]
+        const doneBtn = taskDoneBtn(task , taskObj)
+        task.appendChild(doneBtn)
 
         
 
@@ -93,7 +96,7 @@ function taskForm() {
     form.classList.add("taskForm")
     form.innerHTML = `        <div>
             <label for="taskname">Task name</label>
-            <input type="text" id="taskname" name="taskname">
+            <input type="text" id="taskname" name="taskname" required>
         </div>
         <div>
             <label for="priority">priority</label>
@@ -114,6 +117,21 @@ function taskForm() {
 }
 
 
+
+
+function taskDoneBtn(task , taskObj) { 
+    const doneBtn = document.createElement("input")
+    doneBtn.type = "checkbox"
+    doneBtn.checked = task.done
+    doneBtn.addEventListener("change"  , ()=> {  
+        taskObj.taskDone()
+        console.log(taskObj.done)
+    })
+    return doneBtn
+    
+    
+    
+}
 
 
 
