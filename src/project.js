@@ -39,10 +39,10 @@ class Task {
         this.done = done 
         this.id = crypto.randomUUID()
     }
-
-    done() { 
-        // if clicked -> donecheck = true 
+    taskDone() { 
+        this.done =  !this.done
     }
+
 
 
 
