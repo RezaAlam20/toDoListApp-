@@ -121,6 +121,7 @@ function createTaskEventListener(){
         const task = curproject.createTask(name , priority , dueDate)
         task.checkDue()
         renderTasks(curproject)
+        localStorage.setItem("user" , JSON.stringify(getProjectsArr()))
         
     })
 
