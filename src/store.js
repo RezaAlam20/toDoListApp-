@@ -1,4 +1,3 @@
-
 const nav = document.querySelector("#nav")
 
 
@@ -8,13 +7,11 @@ let activeProject ;
 
 
 
-
-
-
 export function projectRemover(element){ 
     for(let i = 0 ; i<projects.length ; i++){ 
         if (projects[i].id == element.id){ 
             projects.splice(i , 1)
+            localStorage.setItem("user" , JSON.stringify(projects))
         }
 
     }
@@ -36,10 +33,12 @@ function getProjectsArr(){
 
 function addToProjectsArr(newProject){ 
     projects.push(newProject)
+    localStorage.setItem("user" , JSON.stringify(projects))
 
 }
 
-export {projects}
+
+
 export {setActiveProject}
 export {getActiveProject}
 export {getProjectsArr}
