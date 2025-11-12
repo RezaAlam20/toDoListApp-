@@ -112,7 +112,7 @@ nav > * {
     color: black;
     display: grid;
     text-align: center;
-    grid-template-columns: 75% auto auto auto;
+    grid-template-columns: 75% 10% 10%;
     
 
     
@@ -120,6 +120,7 @@ nav > * {
 
 .removeBtn { 
     height: 100%;
+    aspect-ratio: 1/1;
     background-color: var(--btn-danger-bg);
 
 }
@@ -127,17 +128,10 @@ nav > * {
     background-color: var(--btn-danger-bg-hover);
 }
 
-.editProject { 
-    height: 100%;
-    background-color: var(--btn-secondary-bg);
-    
-}
-.editProject:hover { 
-    background-color: var(--btn-secondary-bg-hover);
-}
 
 .createTask { 
     height: 100%;
+    aspect-ratio: 1/1;
     background-color: var(--btn-primary-bg);
     
 }
@@ -246,8 +240,9 @@ input[type="checkbox"] {
     accent-color: var(--btn-border); 
 }
 
-
-
+.project > div  {
+    aspect-ratio:  1/1;
+}
 
 
 
