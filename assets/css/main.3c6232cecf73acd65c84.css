@@ -50,8 +50,8 @@ body {
 }
 @font-face {
     font-family: 'Knewave';
-    src: url(assets/4a5616a7f565e8b0b5a9.woff2) format('woff2'),
-         url(assets/3f3b9f5edf2c437ee5ed.woff)  format('woff');
+    src: url(assets/fonts/Knewave-Regular.woff2) format('woff2'),
+         url(assets/fonts/Knewave-Regular.woff)  format('woff');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -248,4 +248,4 @@ input[type="checkbox"] {
 
 
 
-/*# sourceMappingURL=main.6c8b9c1b20d3c4265e42.css.map*/
+/*# sourceMappingURL=main.3c6232cecf73acd65c84.css.map*/
