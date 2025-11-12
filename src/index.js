@@ -9,6 +9,33 @@ import { getProjectsArr } from "./store"
 import { addToProjectsArr } from "./store"
 import { taskForm } from "./render"
 
+
+const data = localStorage.getItem("user")
+
+if (data){ 
+    const userData = JSON.parse(data)
+    for (let i = 0 ; i < userData.length ; i++) { 
+        const newProject = new project(userData[i].name)
+
+
+        for (let j = 0 ; j < userData[i].tasks.length ; j++) { 
+            const task = userData[i].tasks[j]
+            newProject.createTask(task.name , task.priority , task.dueDate)
+            
+
+
+
+        }
+        addToProjectsArr(newProject)
+    }
+    renderProjects(getProjectsArr())
+
+
+}
+
+
+
+
 const form = document.createElement("form")
 const nav = document.querySelector("nav")
 function projectForm(){  
