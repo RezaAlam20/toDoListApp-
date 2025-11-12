@@ -211,5 +211,33 @@ button  {
     flex-direction:  column ;
 }
 
+.project { 
+    background: var(--color-surface);
+    border: 1px solid var(--btn-border);
+    border-radius: 6px;
+    padding: 6px 8px;
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease,
+        border-color 0.15s ease,
+        background-color 0.15s ease;
+    cursor: pointer;
+}
+
+
+.project:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.10);
+    border-color: var(--color-accent-light);
+    background-color: var(--color-surface);
+}
+
+input[type="checkbox"] {
+    accent-color: var(--btn-border); 
+}
+
+
+
+
 
 
