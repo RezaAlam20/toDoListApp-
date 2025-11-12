@@ -9,15 +9,13 @@ import { getProjectsArr } from "./store"
 import { addToProjectsArr } from "./store"
 import { taskForm } from "./render"
 
-
-
 const form = document.createElement("form")
 const nav = document.querySelector("nav")
 function projectForm(){  
 
 
         form.innerHTML = `<label for="name">project name</label>
-                        <div><input type="text" id="name" name="name">
+                        <div><input type="text" id="name" name="name" required>
                     <button type="submit">create</button></div>`
          nav.appendChild(form)
 
@@ -92,9 +90,11 @@ function createTaskEventListener(){
         const curproject = getActiveProject()
         const name = taskForm.querySelector("#taskname").value
         const priority = taskForm.querySelector("#priority").value
-        curproject.createTask(name , priority)
+        const dueDate = taskForm.querySelector("#dueDate").value
+        const task = curproject.createTask(name , priority , dueDate)
+        task.checkDue()
         renderTasks(curproject)
-
+        
     })
 
 
@@ -104,10 +104,6 @@ function createTaskEventListener(){
 
 }
 
-
-const defaultP = new project("default")
-defaultP.createTask("test" , "high")
-addToProjectsArr(defaultP)
 
 
 
