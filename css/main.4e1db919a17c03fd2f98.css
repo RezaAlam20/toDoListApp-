@@ -1,0 +1,251 @@
+:root {
+
+    --color-bg: #F4F5F7;
+    --color-surface: #FFFFFF;
+
+
+    --color-text-primary: #1A1A1A;
+    --color-text-secondary: #4A4A4A;
+
+
+    --color-accent: #4C8BF5;
+    --color-accent-light: #E1E8F5;
+
+
+    --color-priority-low: #6EBF8B;
+    --color-priority-medium: #F4C36A;
+    --color-priority-high: #E06D6D;
+
+    --btn-primary-bg: #4C8BF5;          
+    --btn-primary-bg-hover: #3B77D8;
+    --btn-primary-text: #FFFFFF;
+
+    --btn-danger-bg: #E06D6D;          
+    --btn-danger-bg-hover: #CC5D5D;
+    --btn-danger-text: #FFFFFF;
+
+    --btn-secondary-bg: #E1E8F5;     
+    --btn-secondary-bg-hover: #CAD6EA;
+    --btn-secondary-text: #1A1A1A;
+
+    --btn-neutral-bg: #FFFFFF;        
+    --btn-neutral-bg-hover: #F1F3F5;
+    --btn-neutral-text: #1A1A1A;
+
+    --btn-border: #D1D5DB; 
+}
+
+
+* {
+    box-sizing:  border-box ;
+    margin:  0 ;
+} 
+
+body { 
+    display:  grid ;
+    grid-template-columns: 1fr 3fr ;
+    min-height: 100vh;
+    background-color: var(--color-bg);
+    font-family: 'Knewave';
+}
+@font-face {
+    font-family: 'Knewave';
+    src: url(/assets/fonts/Knewave-Regular.woff2) format('woff2'),
+         url(/assets/fonts/Knewave-Regular.woff)  format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+
+nav  {
+    background-color: var(--color-surface);
+    height: 100%;
+    display: grid; 
+    grid-template-rows: auto auto ;
+    justify-items:  center ;
+    font-size: small;
+
+
+
+}
+nav > form { 
+    grid-row: 1/2;
+}
+nav > form button { 
+    background-color: var(--btn-primary-bg);
+
+}
+nav > form button:hover  {
+    background-color: var(--btn-primary-bg-hover);
+}
+nav > form > div { 
+    display: flex ; 
+    margin-top: 5px;
+    
+}
+
+
+nav > * { 
+
+    padding: 20px ;
+
+}
+
+#content { 
+    height: 100%;
+}
+
+#container { 
+    display: grid;
+    gap: 5px;
+    grid-row: 2/3;
+    padding: 0;
+    width: 80%;
+}
+#container  > div { 
+    width: 100%;
+    height: min-content;
+    min-height: 20px;
+    background-color: var(--color-bg);
+    color: black;
+    display: grid;
+    text-align: center;
+    grid-template-columns: 75% 10% 10%;
+    
+
+    
+}
+
+.removeBtn { 
+    height: 100%;
+    aspect-ratio: 1/1;
+    background-color: var(--btn-danger-bg);
+
+}
+.removeBtn:hover { 
+    background-color: var(--btn-danger-bg-hover);
+}
+
+
+.createTask { 
+    height: 100%;
+    aspect-ratio: 1/1;
+    background-color: var(--btn-primary-bg);
+    
+}
+.createTask:hover{ 
+    background-color:  var(--btn-primary-bg-hover) ;
+}
+
+
+.task { 
+    width: 80%;
+    height:  min-content;
+    display:  grid ;
+    grid-template-columns: 1fr 1fr 1fr 1fr ;
+    background: var(--color-surface);
+    border: 1px solid var(--btn-border);
+    border-radius: 8px;
+    padding: 12px;
+    transition: 
+        transform 0.15s ease,
+        box-shadow 0.15s ease;
+    cursor: pointer;
+    justify-items: center;
+    align-items: center;
+
+
+}
+.task:hover {
+    transform: translateY(-3px);  /* slight lift */
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+    border-color: var(--color-accent-light);
+}
+.task h1  {
+    grid-column: 1/2;
+    min-height: 2rem;
+    justify-self: center;
+    
+}
+.task > .dueDate { 
+    grid-column: 2/3;
+    grid-row: 1/2;
+}
+
+.task > p { 
+    grid-column: 3/4;
+    justify-self: center;
+
+}
+.task > input {
+    grid-column: 4/5;
+    height: 100%;
+    width: 40%;
+}
+.taskForm { 
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    gap:20px
+    
+
+}
+
+.taskForm > div { 
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+button  { 
+    border: 2px solid var(--btn-border);
+}
+
+
+#content { 
+    display: flex;
+    justify-content: center ;
+    align-items:  center;
+    gap: 20px;
+    flex-direction:  column ;
+}
+
+.project { 
+    background: var(--color-surface);
+    border: 1px solid var(--btn-border);
+    border-radius: 6px;
+    padding: 6px 8px;
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease,
+        border-color 0.15s ease,
+        background-color 0.15s ease;
+    cursor: pointer;
+}
+
+
+.project:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.10);
+    border-color: var(--color-accent-light);
+    background-color: var(--color-surface);
+}
+
+input[type="checkbox"] {
+    accent-color: var(--btn-border); 
+}
+
+.project > div  {
+    aspect-ratio:  1/1;
+}
+
+
+
+
+
+/*# sourceMappingURL=main.4e1db919a17c03fd2f98.css.map*/
