@@ -1,5 +1,5 @@
 
-const container = document.querySelector("#container")
+const content = document.querySelector("#container")
 
 
 
@@ -10,14 +10,14 @@ const container = document.querySelector("#container")
 
 
 export function renderProjects(projects){
-    while(container.firstElementChild){ 
-        container.removeChild(container.firstElementChild)
+    while(content.firstElementChild){ 
+        content.removeChild(content.firstElementChild)
     }
     projects.forEach(project => {
         const div = document.createElement("div")
         div.id = project.id
         div.classList.add("project")
-        container.appendChild(div)
+        content.appendChild(div)
         const name = document.createElement("p")
         name.textContent = project.name
         div.appendChild(name)
@@ -71,6 +71,8 @@ function renderTasks(activeProject){
         task.appendChild(doneBtn)
         const dueDate = renderDueDate(taskObj)
         task.appendChild(dueDate)
+        const dueBadge = dueBadgeMaker(taskObj)
+        task.appendChild(dueBadge)
 
 
         
@@ -94,6 +96,9 @@ function createTaskBtn(div){
 
 function taskForm() { 
     const content = document.querySelector("#content")
+    while(content.firstElementChild){ 
+        content.removeChild(content.firstElementChild)
+    }
     
     const form = document.createElement("form")
     form.classList.add("taskForm")
@@ -144,6 +149,13 @@ function renderDueDate(taskObj){
     const dueDate = taskObj.dueDate
     div.textContent = dueDate
     return div
+}
+function dueBadgeMaker(task){ 
+    const div = document.createElement("div")
+    div.classList.add("dueBadge")
+    div.textContent = task.dueStatus
+    return div
+
 }
 
 export {taskForm}
