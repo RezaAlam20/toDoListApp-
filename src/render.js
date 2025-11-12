@@ -69,6 +69,9 @@ function renderTasks(activeProject){
         const taskObj = activeProject.tasks[i]
         const doneBtn = taskDoneBtn(task , taskObj)
         task.appendChild(doneBtn)
+        const dueDate = renderDueDate(taskObj)
+        task.appendChild(dueDate)
+
 
         
 
@@ -106,6 +109,8 @@ function taskForm() {
                 <option value="high">high</option>
             </select>
         </div>
+        <div> <input type="date" id="dueDate" required>
+        </div>
         <button type="submit">create Task</button>`
     content.appendChild(form)
 
@@ -133,7 +138,13 @@ function taskDoneBtn(task , taskObj) {
     
 }
 
-
+function renderDueDate(taskObj){  
+    const div = document.createElement("div")
+    div.classList.add("dueDate")
+    const dueDate = taskObj.dueDate
+    div.textContent = dueDate
+    return div
+}
 
 export {taskForm}
 export {renderTasks}
