@@ -1,31 +1,34 @@
-const { merge } = require('webpack-merge');
+
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const { merge } = require('webpack-merge');
 const common = require('./webpack.common.js');
 
 module.exports = merge(common, {
-  mode: 'production', 
+  mode: 'production',
   devtool: 'source-map',
   output: {
     filename: 'assets/js/[name].[contenthash].js',
-    publicPath: '',
+    publicPath: '', 
   },
   module: {
     rules: [
       {
-        test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader'],
+        test: /\.css$/i,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              publicPath: '../', 
+            },
+          },
+          'css-loader',
+        ],
       },
     ],
   },
   plugins: [
-    new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
-      filename: 'assets/css/[name].[contenthash].css',
+      filename: 'css/[name].[contenthash].css',
     }),
   ],
-  optimization: {
-    splitChunks: { chunks: 'all' },
-    runtimeChunk: 'single',
-  },
 });
