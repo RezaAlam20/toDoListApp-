@@ -88,13 +88,14 @@ container.addEventListener("click" , (e)=> {
                 renderTasks(getActiveProject())
             }
         }
-        if (e.target.className == "removeBtn"){ 
-            projectRemover(e.target.parentElement)
+        if (e.target.closest(".removeBtn")){ 
+            const remove = e.target.closest(".removeBtn")
+            projectRemover(remove.parentElement)
             renderProjects(getProjectsArr())
 
 
         }
-        else if(e.target.className =="createTask") {
+        else if(e.target.closest(".createTask")) {
             taskForm()
             createTaskEventListener()
         }
